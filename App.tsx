@@ -1,22 +1,27 @@
 import { StatusBar } from 'expo-status-bar'
-import { Alert, StyleSheet, View } from 'react-native'
+import {
+  MD3LightTheme as DefaultTheme,
+  MD3Theme,
+  PaperProvider,
+} from 'react-native-paper'
 
-import { Button } from './src'
+import Home from './src/screens/Home'
+
+//TODO interessante personalizar theme para manter padrão nos componentes
+const theme: MD3Theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'black',
+    secondary: 'orange',
+  },
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Button label="Clique" onPress={() => Alert.alert('Clicou')} />
+    <PaperProvider theme={theme}>
       <StatusBar style="auto" />
-    </View>
+      <Home />
+    </PaperProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
