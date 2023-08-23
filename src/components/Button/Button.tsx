@@ -37,13 +37,14 @@ export default function Button({
   }, [icon, materialIconName])
 
   const handleIconGap = React.useCallback((): number => {
-    if (handleIcon() && title) {
+    const icon = handleIcon()
+    if (icon && title) {
       return 12
     }
     if (title) {
       return 0
     }
-    if (handleIcon()) {
+    if (icon) {
       return -12
     }
     return 0
