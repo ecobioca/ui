@@ -1,9 +1,20 @@
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import { View } from 'react-native'
-import { Button as PaperButton } from 'react-native-paper'
+import {
+  Button as PaperButton,
+  ButtonProps as PaperButtonProps,
+} from 'react-native-paper'
 
-import { ButtonProps } from './Button.types'
+export interface ButtonProps
+  extends Omit<PaperButtonProps, 'icon' | 'children'> {
+  title?: string | React.ReactNode
+  onPress?: () => void
+  materialIconName?: keyof typeof MaterialIcons.glyphMap
+  icon?: React.ReactNode
+  alignIcon?: 'left' | 'right'
+  loading?: boolean
+}
 
 export default function Button({
   title,
