@@ -1,3 +1,5 @@
+import React from 'react'
+import { MaterialIcons } from '@expo/vector-icons'
 import { Alert, StyleSheet, View } from 'react-native'
 import { Divider } from 'react-native-paper'
 
@@ -8,28 +10,33 @@ export default function Home() {
     <View style={styles.container}>
       <>
         <Button
-          title="Continuar"
-          onPress={() => setTimeout(() => Alert.alert('oi'), 200)}
+          onPress={() => setTimeout(() => Alert.alert('aa'), 200)}
+          materialIconName="add-to-home-screen"
         />
         <Divider style={{ height: 1 }} />
         <Button
-          title="Continuar"
           onPress={() => setTimeout(() => Alert.alert('oi lucca'), 200)}
           mode="outlined"
-        />
+        >
+          Continuar
+        </Button>
         <Divider style={{ height: 1 }} />
         <Button
-          title="Voltar"
-          materialIconName="arrow-back"
+          icon={
+            <MaterialIcons name={'arrow-downward'} size={20} color={'#fff'} />
+          }
           onPress={() => setTimeout(() => Alert.alert('oi kaique'), 200)}
-        />
+        >
+          Voltar
+        </Button>
         <Divider style={{ height: 1 }} />
         <Button
-          title="Continuar"
           loading
           materialIconName="arrow-back"
           onPress={() => setTimeout(() => Alert.alert('ola'), 200)}
-        />
+        >
+          Carregando
+        </Button>
       </>
     </View>
   )
