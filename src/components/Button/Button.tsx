@@ -5,57 +5,58 @@ import {
   Button as PaperButton,
   ButtonProps as PaperButtonProps,
 } from 'react-native-paper'
+import { match } from 'ts-pattern'
 
-export interface ButtonProps
-  extends Omit<PaperButtonProps, 'icon' | 'children'> {
-  title?: string | React.ReactNode
+type IconProps =
+  | {
+      materialIconName?: keyof typeof MaterialIcons.glyphMap
+      icon?: undefined
+    }
+  | {
+      materialIconName?: undefined
+      icon?: React.ReactNode
+    }
+type ButtonProps = Omit<PaperButtonProps, 'icon' | 'children'> & {
   onPress?: () => void
-  materialIconName?: keyof typeof MaterialIcons.glyphMap
-  icon?: React.ReactNode
   alignIcon?: 'left' | 'right'
   loading?: boolean
-}
+} & IconProps
 
 export default function Button({
-  title,
   icon,
   materialIconName,
   alignIcon = 'left',
   loading = false,
+  disabled,
   onPress,
+  children,
   mode = 'contained',
   ...rest
-}: ButtonProps) {
-  const handleIcon = React.useCallback(() => {
-    if (icon) {
-      return icon
-    }
-    if (materialIconName) {
-      return <MaterialIcons name={materialIconName} size={20} color={'#fff'} />
-    }
-    return undefined
-  }, [icon, materialIconName])
+}: React.PropsWithChildren<ButtonProps>) {
+  const matchValues = {
+    icon: Boolean(icon || materialIconName),
+    children: Boolean(children),
+  }
 
-  const handleIconGap = React.useCallback((): number => {
-    const icon = handleIcon()
-    if (icon && title) {
-      return 12
-    }
-    if (title) {
-      return 0
-    }
-    if (icon) {
-      return -12
-    }
-    return 0
-  }, [handleIcon, title])
+  const iconGap = match(matchValues)
+    .with({ icon: true, children: false }, () => -16)
+    .with({ icon: true, children: true }, () => 8)
+    .with({ icon: false, children: true }, () => 0)
+    .otherwise(() => 0)
 
   return (
     <View style={{ paddingHorizontal: 20, width: '100%' }}>
       <PaperButton
-        disabled={loading}
         {...rest}
-        icon={handleIcon}
+        disabled={loading || disabled}
+        icon={() =>
+          match({ icon, materialIconName })
+            .with({ materialIconName: undefined }, () => icon)
+            .with({ icon: undefined }, () => (
+              <MaterialIcons name={materialIconName} size={20} color="#fff" />
+            ))
+            .otherwise(() => undefined)
+        }
         mode={mode}
         onPress={onPress}
         loading={loading}
@@ -68,12 +69,12 @@ export default function Button({
           fontWeight: '700',
         }}
         contentStyle={{
-          gap: handleIconGap(),
+          gap: iconGap,
           flexDirection: alignIcon === 'right' ? 'row-reverse' : 'row',
           height: 60,
         }}
       >
-        {title}
+        {children}
       </PaperButton>
     </View>
   )
