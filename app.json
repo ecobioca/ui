@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ui",
-    "slug": "bioca-ui",
+    "slug": "ui",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,15 +28,15 @@
     },
     "extra": {
       "eas": {
-        "projectId": "aa7ab6db-7b8a-4726-8719-7e21f41b53ea"
+        "projectId": "382e8659-33e9-44a0-ad60-90860f11c66f"
       }
     },
-    "owner": "guilherme_gbm",
+    "owner": "ecobioca",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/aa7ab6db-7b8a-4726-8719-7e21f41b53ea"
+      "url": "https://u.expo.dev/382e8659-33e9-44a0-ad60-90860f11c66f"
     }
   }
 }
