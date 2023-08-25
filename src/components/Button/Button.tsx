@@ -53,7 +53,11 @@ export default function Button({
           match({ icon, materialIconName })
             .with({ materialIconName: undefined }, () => icon)
             .with({ icon: undefined }, () => (
-              <MaterialIcons name={materialIconName} size={20} color="#fff" />
+              <MaterialIcons
+                name={materialIconName}
+                size={20}
+                color={mode == 'outlined' ? '#000' : '#fff'}
+              />
             ))
             .otherwise(() => undefined)
         }
@@ -61,6 +65,11 @@ export default function Button({
         onPress={onPress}
         loading={loading}
         uppercase
+        theme={{
+          colors: {
+            primary: '#000',
+          },
+        }}
         style={{
           borderRadius: 4,
         }}
