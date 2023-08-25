@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ui",
-    "slug": "ui",
+    "slug": "bioca-ui",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa7ab6db-7b8a-4726-8719-7e21f41b53ea"
+      }
+    },
+    "owner": "guilherme_gbm",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/aa7ab6db-7b8a-4726-8719-7e21f41b53ea"
     }
   }
 }
