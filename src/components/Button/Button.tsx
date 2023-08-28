@@ -5,7 +5,7 @@ import {
   Button as PaperButton,
   ButtonProps as PaperButtonProps,
 } from 'react-native-paper'
-import { match } from 'ts-pattern'
+import { match, P } from 'ts-pattern'
 
 type IconProps =
   | {
@@ -50,8 +50,8 @@ export default function Button({
         disabled={loading || disabled}
         icon={() =>
           match({ icon, materialIconName })
-            .with({ materialIconName: undefined }, () => icon)
-            .with({ icon: undefined }, () => (
+            .with({ icon: P.not(P.nullish) }, () => icon)
+            .with({ materialIconName: P.not(P.nullish) }, () => (
               <MaterialIcons
                 name={materialIconName}
                 size={20}
