@@ -11,8 +11,11 @@ export default function Home() {
       <>
         <Button
           onPress={() => setTimeout(() => Alert.alert('aa'), 200)}
-          materialIconName="add-to-home-screen"
-        />
+          materialIconName="add-circle"
+          alignIcon="right"
+        >
+          Adicionar
+        </Button>
         <Divider style={{ height: 1 }} />
         <Button
           onPress={() => setTimeout(() => Alert.alert('oi lucca'), 200)}
