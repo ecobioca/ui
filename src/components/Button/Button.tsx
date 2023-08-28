@@ -41,7 +41,6 @@ export default function Button({
   const iconGap = match(matchValues)
     .with({ icon: true, children: false }, () => -16)
     .with({ icon: true, children: true }, () => 8)
-    .with({ icon: false, children: true }, () => 0)
     .otherwise(() => 0)
 
   return (
