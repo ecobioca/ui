@@ -1,22 +1,13 @@
 import { StatusBar } from 'expo-status-bar'
-import { Alert, StyleSheet, View } from 'react-native'
 
-import { Button } from './src'
+import { BiocaThemeProvider } from './src/components'
+import Home from './src/screens/Home'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Button label="Clique" onPress={() => Alert.alert('Clicou')} />
+    <BiocaThemeProvider>
       <StatusBar style="auto" />
-    </View>
+      <Home />
+    </BiocaThemeProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
