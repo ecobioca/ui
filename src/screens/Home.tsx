@@ -8,39 +8,44 @@ import { Button } from '../components'
 export default function Home() {
   return (
     <View style={styles.container}>
-      <>
-        <Button
-          onPress={() => setTimeout(() => Alert.alert('aa'), 200)}
-          materialIconName="add-circle"
-          alignIcon="right"
-        >
-          Adicionar
-        </Button>
-        <Divider style={{ height: 1 }} />
-        <Button
-          onPress={() => setTimeout(() => Alert.alert('oi lucca'), 200)}
-          mode="outlined"
-        >
-          Continuar
-        </Button>
-        <Divider style={{ height: 1 }} />
-        <Button
-          icon={
-            <MaterialIcons name={'arrow-downward'} size={20} color={'#fff'} />
-          }
-          onPress={() => setTimeout(() => Alert.alert('oi kaique'), 200)}
-        >
-          Voltar
-        </Button>
-        <Divider style={{ height: 1 }} />
-        <Button
-          loading
-          materialIconName="arrow-back"
-          onPress={() => setTimeout(() => Alert.alert('ola'), 200)}
-        >
-          Carregando
-        </Button>
-      </>
+      <Button size="lg" onPress={() => {}}>
+        Adicionar
+      </Button>
+      <Button size="md" onPress={() => {}}>
+        Adicionar
+      </Button>
+      <Button size="sm" materialIconName="approval" onPress={() => {}}>
+        Confirm
+      </Button>
+      <Divider style={{ height: 1 }} />
+      <Button onPress={() => {}}>Continuar</Button>
+      <Divider style={{ height: 1 }} />
+      <Button
+        variant="outlined"
+        icon={
+          <MaterialIcons name={'arrow-downward'} size={20} color={'#000'} />
+        }
+      >
+        Voltar
+      </Button>
+      <Divider style={{ height: 1 }} />
+      <Button
+        variant="outlined"
+        loading
+        icon={
+          <MaterialIcons name={'arrow-downward'} size={20} color={'#000'} />
+        }
+      >
+        Voltar
+      </Button>
+      <Divider style={{ height: 1 }} />
+      <Button
+        onPress={() => setTimeout(() => Alert.alert('ola'), 200)}
+        loading
+        disabled
+      >
+        Carregando
+      </Button>
     </View>
   )
 }
@@ -48,9 +53,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    paddingTop: 60,
     backgroundColor: '#fff',
     justifyContent: 'center',
     gap: 20,
+    paddingHorizontal: 20,
   },
 })
